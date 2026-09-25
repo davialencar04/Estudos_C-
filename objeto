@@ -1,1 +1,67 @@
+using System;
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("entre com os dados do produto");
+            
+            Console.WriteLine("nome: ");
+            Produto p;
+            p = new Produto();
+            p.Nome = Console.ReadLine();
+            
+            Console.WriteLine("preço: ");
+            p.Preco = double.Parse(Console.ReadLine());
+            
+            Console.WriteLine("quantidade no estoque : ");
+            p.Quantidade = int.Parse(Console.ReadLine());
+            
+            Console.WriteLine("dados do produto:" + p);
+            
+            Console.WriteLine("diga a quantidade a ser adicionada: ");
+            int qte = int.Parse(Console.ReadLine());
+            p.AdicionarProdutos(qte);
+            
+            Console.WriteLine("dados do produto atualizados: " + p);
+            
+            Console.WriteLine("diga a quantidade de produtos a ser removida do estoque: ");
+            int qte2 = int.Parse(Console.ReadLine());
+            p.RemoverProdutos(qte2);
+            
+            Console.WriteLine("dados do produto atualizados: " + p);
+            
+        }
+    }
+}
 
+namespace ConsoleApp1;
+
+public class Produto
+{
+    public string Nome;
+    public double Preco;
+    public int Quantidade;
+
+    public double ValorEmEstoque()
+    {
+        return Preco * Quantidade;
+    }
+    
+    public void AdicionarProdutos(int quantidade)
+    {
+        Quantidade = Quantidade + quantidade;
+    }
+
+    public void RemoverProdutos(int quantidade)
+    {
+        Quantidade = Quantidade - quantidade;
+    }
+    
+    override public string ToString()
+    {
+        return Nome + " - " + Preco + " - " + Quantidade + " - " + "unidades, total: " + ValorEmEstoque();
+    }
+    
+}
