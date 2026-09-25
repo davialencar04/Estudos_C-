@@ -1,0 +1,47 @@
+using System;
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("digite a altura do retângulo: ");
+            Retângulo x;
+            x = new Retângulo();
+            x.Altura = double.Parse(Console.ReadLine());
+            
+            Console.WriteLine("diga a largura do retângulo: ");
+            x.Largura = double.Parse(Console.ReadLine());
+            
+            Console.WriteLine(x);
+        }
+    }
+}
+
+namespace ConsoleApp1;
+
+public class Retângulo
+{
+    public double Altura;
+    public double Largura;
+
+    public double Área()
+    {
+        return Altura * Largura;
+    }
+
+    public double Perimetro()
+    {
+        return 2*Largura + 2*Altura;
+    }
+    
+    public double Diagonal()
+    {
+        return Math.Sqrt(Math.Pow(Altura, 2) + Math.Pow(Largura, 2));
+    }
+
+    override public string ToString()
+    {
+        return Área() + "---" + Perimetro() + "---" + Diagonal();
+    }
+}
