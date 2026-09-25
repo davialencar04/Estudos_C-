@@ -1,0 +1,46 @@
+using System;
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Aluno x = new Aluno();
+            Console.WriteLine("nome do aluno: ");
+            x.Nome = Console.ReadLine();
+            
+            Console.WriteLine("digite a primeira nota: ");
+            x.nota1 = int.Parse(Console.ReadLine());
+            
+            Console.WriteLine("digite a segunda nota: ");
+            x.nota2 = int.Parse(Console.ReadLine());
+            
+            Console.WriteLine("digite a terceira nota: ");
+            x.nota3 = int.Parse(Console.ReadLine());
+            
+            Console.WriteLine(x.NotaTotal());
+
+            if (x.NotaTotal() < 60)
+            {
+                Console.WriteLine("Reprovado!");
+                Console.WriteLine("quantidade de pontos pendentes:");
+                Console.WriteLine(60 - x.NotaTotal());
+            }
+        }
+    }
+}
+
+namespace ConsoleApp1;
+
+public class Aluno
+{
+    public string Nome;
+    public double nota1;
+    public double nota2;
+    public double nota3;
+
+    public double NotaTotal()
+    {
+        return nota1 + nota2 + nota3;
+    }
+}
