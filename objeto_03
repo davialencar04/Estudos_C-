@@ -1,0 +1,52 @@
+using System;
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Funcionário x;
+            x = new Funcionário();
+            Console.WriteLine("digite seu nome: ");
+            x.Nome = Console.ReadLine();
+            
+            Console.WriteLine("digigite seu salário bruto: ");
+            x.SalárioBruto = double.Parse(Console.ReadLine());
+            
+            Console.WriteLine("digite o valor de todos os impostos que incidem sobre o seu salário: ");
+            x.Imposto = double.Parse(Console.ReadLine());
+            
+            Console.WriteLine(x.Nome + " " + x.SalárioLiquido());
+            
+            Console.WriteLine("digite a porcentagem de aumento sobre o seu salário (bruto): ");
+            double pct = double.Parse(Console.ReadLine());
+            x.AumentarSalário(pct);
+            
+            Console.WriteLine(x);
+        }
+    }
+}
+
+namespace ConsoleApp1;
+
+public class Funcionário
+{
+    public string Nome;
+    public double SalárioBruto;
+    public double Imposto;
+
+    public double SalárioLiquido()
+    {
+        return SalárioBruto - Imposto;
+    }
+
+    public double AumentarSalário(double porcentagem)
+    {
+        return SalárioBruto = ((porcentagem / 100.0) * SalárioBruto) + SalárioBruto;
+    }
+
+    override public string ToString()
+    {
+        return Nome + ", $" + SalárioBruto;
+    }
+}
